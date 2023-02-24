@@ -4,7 +4,12 @@ services:
   nginx:
     build:
       context: ./env/nginx
+    entrypoint: /usr/local/bin/entrypoint.sh
     volumes:
+      - "./data/nginx/logs:/usr/local/openresty/nginx/logs/data"
+      - "./src/nginx/crontab:/etc/cron.d/custom"
+      - "./src/nginx/entrypoint.sh:/usr/local/bin/entrypoint.sh"
+      - "./src/nginx/logrotate:/etc/logrotate.d/custom"
       - "./src/nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf"
       - "./src/nginx/nginx.logs.conf:/usr/local/openresty/nginx/conf/nginx.logs.conf"
     ports:

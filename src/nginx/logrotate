@@ -1,0 +1,17 @@
+missingok
+compress
+notifempty
+create 644 root root
+
+sharedscripts
+postrotate
+    if [ -f /usr/local/openresty/nginx/logs/nginx.pid ]; then
+        kill -USR1 `cat /usr/local/openresty/nginx/logs/nginx.pid`
+    fi
+endscript
+
+
+/usr/local/openresty/nginx/logs/data/data.log {
+    size=10M
+    rotate 200
+}
