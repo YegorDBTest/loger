@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  nginx:
+    build:
+      context: ./env/nginx
+    volumes:
+      - "./src/nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf"
+      - "./src/nginx/nginx.logs.conf:/usr/local/openresty/nginx/conf/nginx.logs.conf"
+    ports:
+      - "80:80"

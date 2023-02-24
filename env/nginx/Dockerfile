@@ -1,0 +1,3 @@
+FROM openresty/openresty:1.21.4.1-0-focal
+
+EXPOSE 80
